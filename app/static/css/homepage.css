@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: black;
+}
+
+#home .hometext {
+    text-align: center;
+}
+
+#home h1 {
+    font-size: 28pt;
+    letter-spacing: 1pt;
+    word-spacing: 0.3em;
+    color: white;
+}
+
+#home h3 {
+    font-size: 12pt;
+    color: #556b2f;
+}
+
+section {
+    display: block;
+    height: 50vh;
+    background-color: white;
+
+}

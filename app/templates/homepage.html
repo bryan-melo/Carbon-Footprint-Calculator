@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+{% endblock %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+    <section id="home">
+        <div id="hometextdiv">
+            <h1 class="hometext">Carbon Footprint Calculator</h1>
+            <h3 class="hometext">Calculate Your Impact: Track and Reduce Your Carbon Footprint</h3>
+        </div>
+    </section>
+
+    <section id="profile">
+        <h2>Profile section</h2>
+        <p>Take a look at your progress.</p>
+    </section>
+
+    <section id="calculate">
+        <h2>Calculate section</h2>
+        <p>Calculate your lates Carbon Footprint</p>
+    </section>
+
+    <section id="Forums">
+        <h2>Forum section</h2>
+        <p>Share your progress with others.</p>
+    </section>
+{% endblock %}
