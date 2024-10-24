@@ -1,16 +1,20 @@
-# Carbon Footprint Calculator Flask App
+# Carbon Footprint Calculator
 
-## Documentation
-<!--Add Project info-->
+## Project Overview
+- **App Name:**
+- **Description:**
+- **Features:**
+- **Contributors:**
 
 ## Steps to Run Flask App
 
-1. **Create a Virtual Environment**
+**1. Create a Virtual Environment**
 ```bash
 python -m venv my_env
 ```
- 
-2. **Activate the Environment**
+<br>
+
+**2. Activate the Environment**
 - macOS/Linux
 ```bash
 source my_env/bin/activate
@@ -19,13 +23,15 @@ source my_env/bin/activate
 ```bash
 my_env\Scripts\activate
 ```
- 
-3. **Install Dependencies**
+<br>
+
+**3. Install Dependencies**
 ```bash
 pip install -r requirements.txt
 ```
+<br>
  
-4. **Run the Web Application**
+**4. Run the Web Application**
 ```bash
 cd app
 ```
@@ -42,11 +48,13 @@ flask run
 export FLASK_APP=app.py
 flask run
 ```
- 
-5. **Access the Application**
+ <br>
+
+**5. Access the Application**
 - Open web browser to http://127.0.0.1:5000
- 
-6. **Stopping the Flask App**
+<br> <br>
+
+**6. Stopping the Flask App**
 - Stop the Flask Server
 ```bash
 Ctrl+C
@@ -56,6 +64,7 @@ Ctrl+C
 ```bash
 deactivate
 ```
+<br>
 
 ## Notes
 <!--Feel free to add additional notes-->
