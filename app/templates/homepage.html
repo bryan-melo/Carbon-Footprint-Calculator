@@ -1,8 +1,10 @@
+
 {% extends "base.html" %}
 
 {% block styles %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
 {% endblock %}
+
 
 {% block title %}Welcome{% endblock %}
 
@@ -12,20 +14,66 @@
             <h1 class="hometext">Carbon Footprint Calculator</h1>
             <h3 class="hometext">Calculate Your Impact: Track and Reduce Your Carbon Footprint</h3>
         </div>
-    </section>
-
-    <section id="profile">
-        <h2>Profile section</h2>
-        <p>Take a look at your progress.</p>
+        <div id="button-container"> 
+            <a href="{{ url_for('calculate_page') }}">   
+                <button class="image-button">
+                    <img src="{{ url_for('static', filename="images/image-1.png") }}" alt="Carbont Footprint">
+                    <span>Begin</span>
+                </button>
+            </a>
+        </div>
+        <div id="learn-more-container">
+            <button type="button" class="btn btn-transparent d-flex flex-column align-items-center">
+                <span>Learn More</span>
+                <i class="bi bi-caret-down"></i>  
+            </button>
+        </div>
     </section>
 
     <section id="calculate">
-        <h2>Calculate section</h2>
-        <p>Calculate your lates Carbon Footprint</p>
+        <div class="container">
+            <div class="left-side">
+                <h2>Picture Placeholder</h2>
+            </div>
+            <div class="right-side">
+                <h2>Text Placeholder</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dignissim lacus sit amet malesuada convallis. 
+                    Nullam quis tempor sapien, nec vulputate felis. Integer euismod dui nec sem ultrices, ut tempor eros facilisis. 
+                    Morbi sed nisl lectus. Duis vel eros ut justo interdum volutpat. Suspendisse potenti. Quisque nec aliquet magna. 
+                    Fusce ac nisi eget orci tincidunt feugiat ut a eros.</p>
+            </div>
+        </div>
     </section>
 
-    <section id="Forums">
-        <h2>Forum section</h2>
-        <p>Share your progress with others.</p>
+    <section id="profile">
+        <div class="container">
+            <div class="left-side">
+                <h2>Text Placeholder</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dignissim lacus sit amet malesuada convallis. 
+                    Nullam quis tempor sapien, nec vulputate felis. Integer euismod dui nec sem ultrices, ut tempor eros facilisis. 
+                    Morbi sed nisl lectus. Duis vel eros ut justo interdum volutpat. Suspendisse potenti. Quisque nec aliquet magna. 
+                    Fusce ac nisi eget orci tincidunt feugiat ut a eros.</p>
+            </div>
+            <div class="right-side">
+                <h2>Picture Placeholder</h2>
+            </div>
+        </div>
     </section>
+        
+    <section id="Forums">
+        <div class="container">
+            <div class="left-side">
+                <h2>Picture Placeholder</h2>
+            </div>
+            <div class="right-side">
+                <h2>Text Placeholder</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dignissim lacus sit amet malesuada convallis. 
+                    Nullam quis tempor sapien, nec vulputate felis. Integer euismod dui nec sem ultrices, ut tempor eros facilisis. 
+                    Morbi sed nisl lectus. Duis vel eros ut justo interdum volutpat. Suspendisse potenti. Quisque nec aliquet magna. 
+                    Fusce ac nisi eget orci tincidunt feugiat ut a eros.</p>
+            </div>
+        </div>
+    </section>
+    
+
 {% endblock %}
