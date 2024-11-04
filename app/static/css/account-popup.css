@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 
+/* Login popup start */
 /* The popup form - hidden by default */
 .form-popup {
     display: none;
@@ -95,3 +96,26 @@
 .form-container .btn:hover, .open-button:hover {
     opacity: 1;
 }
+/* Login popup end */
+
+/* Create Account popup start */
+#create-account-form .button-container {
+    display: flex;
+    justify-content: center; 
+    margin-top: 10px; 
+}
+
+#create-account-form .btn {
+    flex: none; 
+}
+
+.form-container input[type=email] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1; 
+    border-radius: 10px;
+}
+
+/* Create Account popup end */
