@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     
     <!-- Static CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/account-popup.css') }}"></script>
     {% block styles %}{% endblock %}
 
     <title>{% block title %}{% endblock %}</title>
@@ -41,30 +41,61 @@
                                 <i class="bi bi-person-circle"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" onclick="openForm()">Login</a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('create_account_page') }}">Create Account</a></li>
+                                <li><a class="dropdown-item" onclick="openLoginForm()">Login</a></li>
+                                <li><a class="dropdown-item" onclick="openCreateAccountForm()">Create Account</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
             <!-- Login Popup Form -->
-            <div class="form-popup" id="myForm">
-                <form action="/action_page.php" class="form-container">
+            <div class="form-popup" id="login-form">
+                <form action="#" class="form-container">
                     <div class="header">
                         <h2>Login</h2>
-                        <span class="close-btn" onclick="closeForm()">&times;</span> <!-- Close button -->
+                        <span class="close-btn" onclick="closeLoginForm()">&times;</span> 
                     </div>
                     
-                    <label for="email">Email</label>
-                    <input type="text" placeholder="Enter Email" name="email" required>
+                    <label for="email">Username</label>
+                    <input type="text" name="login-username" required>
                     
                     <label for="psw">Password</label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <input type="password" name="login-password" required>
                     
                     <div class="button-container">
                         <button type="submit" class="btn">Login</button>
-                        <a href="#" class="forgot-password-link">Forgot Password?</a> <!-- Create Account link -->
+                        <a href="#" class="forgot-password-link">Forgot Password?</a> 
+                    </div>
+                </form>
+            </div>
+            <!-- Create Account Popup Form -->
+            <div class="form-popup" id="create-account-form">
+                <form action="#" class="form-container">
+                    <div class="header">
+                        <h2>Create your Account</h2>
+                        <span class="close-btn" onclick="closeCreateAccountForm()">&times;</span> 
+                    </div>
+
+                    <label for="username">Username</label>
+                    <input type="text" name="username" required>
+
+                    <label for="email">Email address</label>
+                    <input type="email" name="email" required>
+                    
+                    <label for="password">Password</label>
+                    <input type="password" name="password" required>
+
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" name="confirm-password" required>
+
+                    <label for="first-name">First Name</label>
+                    <input type="text" name="first-name" required>
+
+                    <label for="last-name">Last Name</label>
+                    <input type="text" name="last-name" required>
+                    
+                    <div class="button-container">
+                        <button type="submit" class="btn">Create Account</button>
                     </div>
                 </form>
             </div>
@@ -85,7 +116,7 @@
 
     <!-- Bootstrap CSS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- JS script for Login -->
-    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+    <!-- JS script for Account -->
+    <script src="{{ url_for('static', filename='js/account-popup.js') }}"></script>
 </body>
 </html>
