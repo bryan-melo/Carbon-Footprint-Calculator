@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+    max-width: 350px;    
+    min-height: 425px; 
+    padding: 20px;          
+    background-color: white; 
+    transform: scale(1.2); 
+    border: 1px solid #556b2f;
+    border-radius: 10px;
+}
+
+/* Header styles */
+.header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding-bottom: 25px;
+    padding-top: 10px;
+}
+
+/* Close button styles */
+.close-btn {
+    cursor: pointer;
+    font-size: 24px; 
+    color: #556b2f; 
+    margin-top: -20px;
+    margin-right: 5px;
+}
+
+
+/* Input styles */
+.form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Input focus styles */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; 
+}
+
+
+.form-container .btn {
+    background-color:  #556b2f;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    flex: 0.8; 
+    opacity: 0.8;
+}
+
+.form-container .btn.cancel {
+    margin-right: 0; 
+}
+
+.forgot-password-link {
+    display: flex; 
+    align-items: center; 
+    color: #45a6f6; 
+    text-decoration: none; 
+    margin-left: 10px;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline; 
+}
+
+.form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
