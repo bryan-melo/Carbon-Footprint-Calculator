@@ -18,7 +18,7 @@
     <header>
         <!-- Navbar -->
         <nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-            <div class="container-fluid">    
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url_for('homepage') }}">
                     <i class="bi bi-calculator"></i>
                 </a>
@@ -27,77 +27,80 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('calculate_page') }}">Calculate</a>
+                        <li class="nav-item" id="login-item">
+                            <a class="nav-link" onclick="openLoginForm()">Login</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('forums_page') }}">Forums</a>
+                        <li class="nav-item" id="create-account-item">
+                            <a class="nav-link" onclick="openCreateAccountForm()">Create Account</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('about_page') }}">About</a>
-                        </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" id="user-dropdown" style="display: none;">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle"></i>
+                                <span id="username-display" class="ms-2"></span>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" onclick="openLoginForm()">Login</a></li>
-                                <li><a class="dropdown-item" onclick="openCreateAccountForm()">Create Account</a></li>
-                            </ul>
+                            <ul class="dropdown-menu dropdown-menu-end" id="user-menu"></ul>
                         </li>
                     </ul>
                 </div>
             </div>
             <!-- Login Popup Form -->
             <div class="form-popup" id="login-form">
-                <form action="#" class="form-container">
+                <form action="#" class="form-container" onsubmit="submitLoginForm(event)">
                     <div class="header">
                         <h2>Login</h2>
                         <span class="close-btn" onclick="closeLoginForm()">&times;</span> 
                     </div>
                     
-                    <label for="email">Username</label>
-                    <input type="text" name="login-username" required>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
                     
-                    <label for="psw">Password</label>
-                    <input type="password" name="login-password" required>
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="login-password" required>
                     
                     <div class="button-container">
                         <button type="submit" class="btn">Login</button>
-                        <a href="#" class="forgot-password-link">Forgot Password?</a> 
+                        <a onclick="openCreateAccountForm()" class="forgot-password-link">Create Account?</a> 
                     </div>
+                    <div id="error-message" style="color: red; display: none;"></div>
                 </form>
             </div>
             <!-- Create Account Popup Form -->
             <div class="form-popup" id="create-account-form">
-                <form action="#" class="form-container">
+                <form action="#" class="form-container" onsubmit="submitCreateAccountForm(event)">
                     <div class="header">
                         <h2>Create your Account</h2>
                         <span class="close-btn" onclick="closeCreateAccountForm()">&times;</span> 
                     </div>
 
                     <label for="username">Username</label>
-                    <input type="text" name="username" required>
+                    <input type="text" id="create-username" name="username" required>
 
                     <label for="email">Email address</label>
-                    <input type="email" name="email" required>
+                    <input type="email" id="email" name="email" required>
                     
                     <label for="password">Password</label>
-                    <input type="password" name="password" required>
+                    <input type="password" id="password" name="password" required>
 
                     <label for="confirm-password">Confirm Password</label>
-                    <input type="password" name="confirm-password" required>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
 
                     <label for="first-name">First Name</label>
-                    <input type="text" name="first-name" required>
+                    <input type="text" id="first-name" name="first-name" required>
 
                     <label for="last-name">Last Name</label>
-                    <input type="text" name="last-name" required>
+                    <input type="text" id="last-name" name="last-name" required>
                     
                     <div class="button-container">
                         <button type="submit" class="btn">Create Account</button>
                     </div>
                 </form>
+            </div>
+            <!-- Account Creation Success Popup -->
+            <div class="success-popup" id="success-popup" style="display: none;">
+                <div class="popup-content">
+                    <p>Account created successfully!</p>
+                    <a href="{{ url_for('homepage') }}" class="btn">OK</a>
+                </div>
             </div>
         </nav>
     </header>
@@ -114,9 +117,20 @@
     </footer>
     -->
 
+    <!-- Scripts -->
     <!-- Bootstrap CSS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- JS script for Account -->
-    <script src="{{ url_for('static', filename='js/account-popup.js') }}"></script>
+
+    <!-- Global variable for JS Files -->
+    <script> 
+        const homeUrl = "{{ url_for('homepage') }}"; 
+        const profileUrl = "{{ url_for('profile_page') }}"
+        const forumUrl = "{{ url_for('forums_page') }}"
+        const calculateUrl = "{{ url_for('calculate_page') }}"
+    </script>
+
+    <!-- JS scripts for Account -->
+    <script src="{{ url_for('static', filename='js/account/account-popup.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/account/account-navbar-menu.js') }}"></script>
 </body>
 </html>
