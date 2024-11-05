@@ -7,21 +7,24 @@
 .form-popup {
     display: none;
     position: fixed;
-    top: 45%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9;
 }
 
 /* Add styles to the form container */
-.form-container {
-    max-width: 350px;    
-    min-height: 425px; 
+.form-container {   
+    min-width: 350px; 
+    max-width: 400px; 
+    min-height: 420px;  
+    max-height: 520px; 
     padding: 20px;          
     background-color: white; 
-    transform: scale(1.2); 
+    transform: scale(1.1); 
     border: 1px solid #556b2f;
     border-radius: 10px;
+    overflow: auto;
 }
 
 /* Header styles */
@@ -100,9 +103,8 @@
 
 /* Create Account popup start */
 #create-account-form {
-    top: 50%; /* Adjust this value to position the popup as desired */
+    top: 50%;
 }
-
 
 #create-account-form .button-container {
     display: flex;
@@ -123,3 +125,71 @@
     border-radius: 10px;
 }
 /* Create Account popup end */
+
+/* Input styles */
+.form-container input[type=text], 
+.form-container input[type=password], 
+.form-container input[type=email] { 
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 10px;
+    color: black; /* Change text color to black */
+}
+
+/* Input focus styles */
+.form-container input[type=text]:focus, 
+.form-container input[type=password]:focus, 
+.form-container input[type=email]:focus { /* Include email focus style */
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Success Popup */
+.success-popup {
+    display: none;  /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;  /* Ensure it appears above other content */
+    min-width: 350px; 
+    max-width: 400px; 
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #556b2f;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);  /* Optional shadow for emphasis */
+}
+
+.popup-content p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Styles for buttons and anchor tags that look like buttons */
+.popup-content button, 
+.popup-content a { /* Include anchor tags */
+    background-color: #556b2f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.9;
+    text-decoration: none; /* Remove underline from anchor */
+    display: inline-block; /* Make anchor behave like a button */
+}
+
+.popup-content button:hover, 
+.popup-content a:hover { /* Hover effect for both */
+    opacity: 1;
+}
+
+a {
+    cursor: pointer;
+}
