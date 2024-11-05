@@ -3,5 +3,13 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-    <h1>Profile Page</h1>
+    <div>
+        <h2 id="welcome-user-message"></h2>
+    </div>
+
 {% endblock %}
+
+{% block scripts %} 
+    <script src="{{ url_for('static', filename='js/profile/profile-user.js') }}"></script>
+{% endblock %}
+

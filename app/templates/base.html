@@ -132,5 +132,8 @@
     <!-- JS scripts for Account -->
     <script src="{{ url_for('static', filename='js/account/account-popup.js') }}"></script>
     <script src="{{ url_for('static', filename='js/account/account-navbar-menu.js') }}"></script>
+
+    <!-- Additional scripts for child templates -->
+    {% block scripts %}{% endblock %}
 </body>
 </html>
