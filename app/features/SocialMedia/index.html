@@ -8,7 +8,7 @@
       <ol>
       </ol>
       <div class="create-thread">
-         <textarea class="title" placeholder="Thread Title"></textarea>
+         <textarea class="thread-title" placeholder="Thread Title"></textarea>
          <textarea class="content" placeholder="Content"></textarea>
          <button>Create Thread</button>
       </div>
@@ -49,7 +49,7 @@
       
       var button = document.querySelector('button');
       button.addEventListener('click', function(){
-         var title = document.querySelector('.title');
+         var title = document.querySelector('.thread-title');
          var content = document.querySelector('.content');
          console.log(title.value);
          console.log(content.value);
@@ -101,7 +101,7 @@
             width: 80%;
             height: 80px;
         }
-      .title {
+      .thread-title {
             width: 20%;
             height: 20px;
       }
