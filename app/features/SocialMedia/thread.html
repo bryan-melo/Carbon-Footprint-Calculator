@@ -29,6 +29,9 @@
                 <p class="comment-count">
                     ${thread.comments.length} comments 
                 </p>
+                <p class="author">
+                    Post by: ${thread.author}
+                </p>
             </div>
         `;
         header.insertAdjacentHTML('beforeend', headerHTML);
@@ -117,8 +120,13 @@
         .timestamp {
            padding-right: 10px;
         }
-        .comment-ts{
+        .comment-ts {
             padding-left: 10px;
         }
+        .author
+        {
+            padding-left: 10px;
+        }
+        
      </style>
 </body>

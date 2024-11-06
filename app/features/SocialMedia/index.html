@@ -7,16 +7,22 @@
    <div class="main">
       <ol>
       </ol>
+      <div class="create-thread">
+         <textarea class="title" placeholder="Thread Title"></textarea>
+         <textarea class="content" placeholder="Content"></textarea>
+         <button>Create Thread</button>
+      </div>
    </div>
+   
    
    <script src="data.js"></script>
    <script>
-      console.log(threads);
-      var container = document.querySelector('ol');
-      for (let thread of threads){
+
+      function addThread(thread)
+      {
          var html = `
          <li class="row">
-               <a href="/thread.html?id=${thread.id}">
+               <a href="/app/features/SocialMedia/thread.html?id=${thread.id}" class="external">
                   <h4 class="title">
                      ${thread.title}
                   </h4>
@@ -30,9 +36,33 @@
                   </div>
                </a>
          </li>
-         `
-         container.insertAdjacentHTML('beforeend', html)
+         `;
+         container.insertAdjacentHTML('beforeend', html);
       }
+
+
+      var container = document.querySelector('ol');
+      for (let thread of threads){
+         addThread(thread);
+      }
+
+      
+      var button = document.querySelector('button');
+      button.addEventListener('click', function(){
+         var title = document.querySelector('.title');
+         var content = document.querySelector('.content');
+         console.log(title.value);
+         console.log(content.value);
+         var thread = {
+               id: threads.length + 1,
+               title: title.value,
+               author: "Benny",
+               date: Date.now(),
+               content: content.value,
+               comments: []
+         }
+         addThread(thread);
+        })
    </script>
    <style>
       body {
@@ -66,6 +96,14 @@
       }
       .timestamp {
          padding-right: 10px;
+      }
+      .content {
+            width: 80%;
+            height: 80px;
+        }
+      .title {
+            width: 20%;
+            height: 20px;
       }
    </style>
 </body>
