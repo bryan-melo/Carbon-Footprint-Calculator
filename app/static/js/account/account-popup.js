@@ -99,8 +99,8 @@ function submitCreateAccountForm(event) {
 
   // Validate passwords
   if (!validatePasswords(password, confirmPassword)) {
-      document.getElementById("confirm-password").reportValidity(); 
-      return;
+    document.getElementById("confirm-password").reportValidity(); 
+    return;
   }
 
   // Prep data
