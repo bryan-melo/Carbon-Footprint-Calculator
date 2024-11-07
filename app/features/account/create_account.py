@@ -11,17 +11,17 @@ create_account_blueprint = Blueprint('create_account', __name__)
 def check_existing_username(con, username):
     cur = con.cursor()
     cur.execute("SELECT 1 FROM accounts WHERE username = ?", (username,))
-    exist_status = cur.fetchone()
+    username_exist = cur.fetchone()
     cur.close()
-    return "Username already exists!" if exist_status else None
+    return "Username already exists!" if username_exist else None
 
 
 def check_existing_email(con, email):
     cur = con.cursor()
     cur.execute("SELECT 1 FROM accounts WHERE email = ?", (email,))
-    exist_status = cur.fetchone()
+    email_exist = cur.fetchone()
     cur.close()
-    return "Email already exists!" if exist_status else None
+    return "Email already exists!" if email_exist else None
 
 
 # Route function
@@ -58,7 +58,7 @@ def create_account():
             if email_exists:
                 return jsonify({'email_error': email_exists}), 409
             
-            # Hass and add salt to password
+            # Add salt and Hash password
             salt = bcrypt.gensalt()
             hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
         
@@ -74,4 +74,3 @@ def create_account():
         return jsonify({'message': 'Account created successfully!'}), 201
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
