@@ -5,8 +5,12 @@ cur = con.cursor()
 # SQL_CREATE_TABLE = '''CREATE TABLE IF NOT EXISTS user(user_id INTEGER PRIMARY KEY, username TEXT, password TEXT, emissions REAL)'''
 # cur.execute(SQL_CREATE_TABLE)
 
-# SQL_CREATE_TABLE = '''CREATE TABLE IF NOT EXISTS post(post_id INTEGER PRIMARY KEY,  user_id INTEGER, post_title TEXT,  post_date DATE)'''
+# SQL_CREATE_TABLE = '''CREATE TABLE IF NOT EXISTS post(post_id INTEGER PRIMARY KEY,  user_id INTEGER, post_title TEXT,  post_date DATE, post_text TEXT)'''
 # cur.execute(SQL_CREATE_TABLE)
+
+# SQL_CREATE_TABLE = '''CREATE TABLE IF NOT EXISTS comment(comment_id INTEGER PRIMARY KEY, user_id INTEGER, post_id INTEGER, comment_text TEXT)'''
+# cur.execute(SQL_CREATE_TABLE)
+
 # con.commit()
 
 # cur.execute("""
