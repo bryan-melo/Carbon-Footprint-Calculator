@@ -15,7 +15,7 @@
             <h3 class="hometext">Calculate Your Impact: Track and Reduce Your Carbon Footprint</h3>
         </div>
         <div id="button-container"> 
-            <a href="{{ url_for('calculate_page') }}">   
+            <a onclick="checkLogInStatus()">   
                 <button class="image-button">
                     <img src="{{ url_for('static', filename="images/image-1.png") }}" alt="Carbont Footprint">
                     <span>Begin</span>

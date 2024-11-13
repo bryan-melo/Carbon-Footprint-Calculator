@@ -1,5 +1,5 @@
 import sqlite3
-con = sqlite3.connect("carbon_calc.db")
+con = sqlite3.connect("app/carbon_calc.db")
 cur = con.cursor()
 
 # SQL_CREATE_TABLE = '''CREATE TABLE IF NOT EXISTS user(user_id INTEGER PRIMARY KEY, username TEXT, password TEXT, emissions REAL)'''
