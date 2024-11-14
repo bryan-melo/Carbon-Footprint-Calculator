@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <style>
+        a {
+        text-decoration: none;
+        color: black;
+        }
+        h1, h4, ol{
+        margin: 0;
+        }
+        p {
+        margin: 5px 0;
+        }
+        .top-bar {
+        background-color: #568203;
+        padding: 0 40px;
+        }
+        .main {
+        background-color: #F6F6EF;
+        padding: 10px 15px;
+        }
+        .row {
+        padding: 5px 0;
+        }
+        .bottom {
+        display: flex;
+        color: grey;
+        font-size: 12px;
+        }
+        .timestamp {
+        padding-right: 10px;
+        }
+        .content {
+            width: 100%;
+            height: 80px;
+        }
+        .thread-title {
+            width: 20%;
+            height: 30px;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}Social Media{% endblock %}
+
+{% block content %}
+    <div class="top-bar">
+        <h1>
+            My Forum
+        </h1>
+    </div>
+    <div class="main">
+        <ol>
+        </ol>
+        <div class="create-thread">
+        <textarea id="thread-title" class="thread-title" placeholder="Thread Title"></textarea>
+        <textarea id="thread-content" class="content" placeholder="Content"></textarea>
+        <button id="create-thread-btn">Create Thread</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/social-media/data.js') }}"></script>
+    <script>
+        function addThread(thread) 
+        {
+            const threadUrl = socialMediaThreadUrl.replace('0', thread.id);
+            var html = `
+                <li class="row">
+                    <a href="${threadUrl}" class="external">
+                        <h4 class="title">${thread.title}</h4>
+                        <div class="bottom">
+                            <p class="timestamp">${new Date(thread.date).toLocaleDateString()}</p>
+                            <p class="comment-count">${thread.comments.length} comments</p>
+                        </div>
+                    </a>
+                </li>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+        }
+
+
+        var container = document.querySelector('ol');
+        for (let thread of threads){
+            addThread(thread);
+        }
+
+
+        var button = document.getElementById('create-thread-btn');
+        button.addEventListener('click', function(){
+            var title = document.getElementById('thread-title');
+            var content = document.getElementById('thread-content');
+            console.log(title.value);
+            console.log(content.value);
+            var thread = {
+                id: threads.length + 1,
+                title: title.value,
+                author: "Benny",
+                date: Date.now(),
+                content: content.value,
+                comments: []
+            };
+            addThread(thread);
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/create-account.css') }}">
+{% endblock %}
+
+{% block title %}Create Account{% endblock %}
+
+{% block content %}
+    <section id="account-section">
+        <div class="account-form-popup" id="create-account-form">
+            <form action="#" class="account-form-container" onsubmit="submitCreateAccountForm(event)">
+                <div class="account-header">
+                    <h2 id="create-account-header">Create Your Account</h2>
+                </div>
+
+                <label for="username">Username</label>
+                <input type="text" id="create-username" name="username" required>
+
+                <label for="email">Email address</label>
+                <input type="email" id="create-email" name="email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="create-password" name="password" required>
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+
+                <label for="first-name">First Name</label>
+                <input type="text" id="create-first-name" name="first-name" required>
+
+                <label for="last-name">Last Name</label>
+                <input type="text" id="create-last-name" name="last-name" required>
+                
+                <div class="account-button-container">
+                    <button type="submit" class="account-btn">Create Account</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="account-success-popup" id="success-popup" style="display: none;">
+            <div class="popup-content">
+                <p>Account created successfully!</p>
+                <a href="{{ url_for('homepage') }}" class="account-popup-btn">OK</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/account/create-account.js') }}"></script>
+{% endblock %}
