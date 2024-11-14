@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     
     <!-- Static CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/account-popup.css') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login-popup.css') }}">
     {% block styles %}{% endblock %}
 
     <title>{% block title %}{% endblock %}</title>
@@ -27,18 +27,25 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <!-- User not logged in items -->
                         <li class="nav-item" id="login-item">
                             <a class="nav-link" onclick="openLoginForm()">Login</a>
                         </li>
                         <li class="nav-item" id="create-account-item">
-                            <a class="nav-link" onclick="openCreateAccountForm()">Create Account</a>
+                            <a class="nav-link" href="{{ url_for('create_account') }}">Create Account</a>
                         </li>
-                        <li class="nav-item dropdown" id="user-dropdown" style="display: none;">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-circle"></i>
-                                <span id="username-display" class="ms-2"></span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" id="user-menu"></ul>
+                        <!-- User logged in items-->
+                        <li class="nav-item" id="profile-item" style="display: none;">
+                            <a class="nav-link" href="{{ url_for('profile_page') }}">Profile</a>
+                        </li>
+                        <li class="nav-item" id="calculate-item" style="display: none;">
+                            <a class="nav-link" href="{{ url_for('calculate_page') }}">Calculate</a>
+                        </li>
+                        <li class="nav-item" id="social-media-item" style="display: none;">
+                            <a class="nav-link" href="{{ url_for('social_media_page') }}">Social Media</a>
+                        </li>
+                        <li class="nav-item" id="logout-item" style="display: none;">
+                            <a class="nav-link" onclick="logout()">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -50,57 +57,16 @@
                         <h2>Login</h2>
                         <span class="close-btn" onclick="closeLoginForm()">&times;</span> 
                     </div>
-                    
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>
-                    
                     <label for="login-password">Password</label>
                     <input type="password" id="login-password" name="login-password" required>
-                    
                     <div class="button-container">
                         <button type="submit" class="btn">Login</button>
-                        <a onclick="openCreateAccountForm()" class="forgot-password-link">Create Account?</a> 
+                        <a href="{{ url_for('create_account') }}" class="forgot-password-link">Create Account?</a> 
                     </div>
                     <div id="error-message" style="color: red; display: none;"></div>
                 </form>
-            </div>
-            <!-- Create Account Popup Form -->
-            <div class="form-popup" id="create-account-form">
-                <form action="#" class="form-container" onsubmit="submitCreateAccountForm(event)">
-                    <div class="header">
-                        <h2>Create your Account</h2>
-                        <span class="close-btn" onclick="closeCreateAccountForm()">&times;</span> 
-                    </div>
-
-                    <label for="username">Username</label>
-                    <input type="text" id="create-username" name="username" required>
-
-                    <label for="email">Email address</label>
-                    <input type="email" id="email" name="email" required>
-                    
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
-
-                    <label for="first-name">First Name</label>
-                    <input type="text" id="first-name" name="first-name" required>
-
-                    <label for="last-name">Last Name</label>
-                    <input type="text" id="last-name" name="last-name" required>
-                    
-                    <div class="button-container">
-                        <button type="submit" class="btn">Create Account</button>
-                    </div>
-                </form>
-            </div>
-            <!-- Account Creation Success Popup -->
-            <div class="success-popup" id="success-popup" style="display: none;">
-                <div class="popup-content">
-                    <p>Account created successfully!</p>
-                    <a href="{{ url_for('homepage') }}" class="btn">OK</a>
-                </div>
             </div>
         </nav>
     </header>
@@ -124,14 +90,15 @@
     <!-- Global variable for JS Files -->
     <script> 
         const homeUrl = "{{ url_for('homepage') }}"; 
-        const profileUrl = "{{ url_for('profile_page') }}"
-        const forumUrl = "{{ url_for('forums_page') }}"
-        const calculateUrl = "{{ url_for('calculate_page') }}"
+        const profileUrl = "{{ url_for('profile_page') }}";
+        const calculateUrl = "{{ url_for('calculate_page') }}";
+        const socialMediaUrl = "{{ url_for('social_media_page') }}";
+        const socialMediaThreadUrl = "{{ url_for('social_media_thread_page', user_id=0) }}";
     </script>
 
     <!-- JS scripts for Account -->
-    <script src="{{ url_for('static', filename='js/account/account-popup.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/account/account-navbar-menu.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/account/login-popup.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/account/navbar-menu.js') }}"></script>
 
     <!-- Additional scripts for child templates -->
     {% block scripts %}{% endblock %}
