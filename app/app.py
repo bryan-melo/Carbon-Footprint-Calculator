@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from .api.account import register_account_blueprints
+from .api.SocialMedia import register_social_media_blueprints
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -7,6 +8,7 @@ CORS(app)
 
 # Register blueprints
 register_account_blueprints(app)
+register_social_media_blueprints(app)
 
 
 @app.route('/')
