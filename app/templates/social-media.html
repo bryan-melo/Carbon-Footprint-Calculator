@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/timeline.css') }}">
+{% endblock %}
+
+{% block title %}Social Media{% endblock %}
+
+{% block content %}
+    <div class="top-bar">
+        <h1>My Forum</h1>
+    </div>
+    
+    <div class="main">
+        <ol>
+        </ol>
+        <div class="create-thread">
+        <textarea id="thread-title" class="thread-title" placeholder="Thread Title"></textarea>
+        <textarea id="thread-content" class="content" placeholder="Content"></textarea>
+        <button id="create-thread-btn">Create Thread</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/social-media/data.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/social-media/timeline.js')}}"></script>
+{% endblock %}

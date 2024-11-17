@@ -1,0 +1,128 @@
+/* Create Account Form */
+body {
+    background-color: #dadada;
+}
+
+#account-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    background-color: #F5F5F5;
+    margin-top: 15%;
+}
+
+.account-form-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background-color: white;
+    border: 2px solid #556b2f;
+    border-radius: 10px;
+    padding: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.account-form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.account-form-container input[type="text"], 
+.account-form-container input[type="email"], 
+.account-form-container input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 15px 0;
+    border: none;
+    border-radius: 10px;
+    background: #f1f1f1;
+    color: black;
+}
+
+.account-form-container input[type="text"]:focus, 
+.account-form-container input[type="email"]:focus, 
+.account-form-container input[type="password"]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.account-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.account-btn {
+    padding: 10px 20px;
+    background-color: #556b2f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.account-btn:hover {
+    background-color: #6e8b3d;
+}
+
+/* Success Popup */
+.account-success-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    background-color: white;
+    border: 1px solid #556b2f;
+    border-radius: 10px;
+    padding: 20px;
+    min-width: 300px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.account-popup-btn {
+    background-color: #556b2f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    opacity: 0.9;
+}
+
+.account-popup-btn:hover {
+    opacity: 1;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 24px;
+    float: right;
+    color: #aaa;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+#create-account-header {
+    margin-bottom: 30px;
+    margin-left: -20px;
+}

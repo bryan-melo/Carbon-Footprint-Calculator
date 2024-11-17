@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/thread.css') }}">
+{% endblock %}
+
+{% block title %}Social Media Thread{% endblock %}
+
+{% block content %}
+    <div class="top-bar">
+        <h1>
+            My Forum
+        </h1>
+    </div>
+    <div class="main">
+        <div id="thread-header" class="header"></div>
+        <div id="thread-content"></div>
+        <textarea></textarea>
+        <button id="add-comment-btn">Add comment</button>
+        <div class="comments">
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/social-media/data.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/social-media/thread.js') }}"></script>
+{% endblock %}
