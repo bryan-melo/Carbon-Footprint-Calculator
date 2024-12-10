@@ -21,7 +21,7 @@ function submitLoginForm(event) {
   };
 
   // Send data to the backend
-  fetch("http://127.0.0.1:5000/api/login", {
+  fetch("http://127.0.0.1:5000/api/account/login", {
     headers: {"Content-Type": "application/json"},
     method: "POST",
     body: JSON.stringify(data),

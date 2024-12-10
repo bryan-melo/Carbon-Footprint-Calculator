@@ -1,61 +1,7 @@
 {% extends "base.html" %}
 
 {% block styles %}
-    <style>
-        a {
-        text-decoration: none;
-        color: black;
-        }
-        h1, h4, ol{
-        margin: 0;
-        }
-        p {
-        margin: 5px 0;
-        }
-        textarea {
-            width: 80%;
-            height: 80px;
-        }
-        button {
-            display: block;
-            margin: 10px 0;
-        }
-        .top-bar {
-        background-color: #568203;
-        padding: 0 40px;
-        }
-        .main {
-        background-color: #F6F6EF;
-        padding: 10px 40px;
-        }
-        .comments {
-            margin: 40px 0;
-        }
-        .comment {
-            margin: 10px 0;
-        }
-        .row {
-        padding: 5px 0;
-        }
-        .bottom, .top-comment {
-        display: flex;
-        color: grey;
-        font-size: 12px;
-        }
-        .timestamp {
-        padding-right: 10px;
-        }
-        .comment-ts {
-            padding-left: 10px;
-        }
-        .author
-        {
-            padding-left: 10px;
-        }
-        #thread-content {
-            margin-bottom: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/thread.css') }}">
 {% endblock %}
 
 {% block title %}Social Media Thread{% endblock %}
@@ -78,50 +24,5 @@
 
 {% block scripts %}
     <script src="{{ url_for('static', filename='js/social-media/data.js') }}"></script>
-    <script>
-        var id = window.location.pathname.split('/').pop();
-        var thread = threads.find(t => t.id == id);
-        console.log(thread);
-        var header = document.getElementById('thread-header');
-        var headerHTML = `
-            <h4 class="title">${thread.title}</h4>
-            <div class="bottom">
-                <p class="timestamp">${new Date(thread.date).toLocaleString()}</p>
-                <p class="comment-count">${thread.comments.length} comments</p>
-                <p class="author">Post by: ${thread.author}</p>
-            </div>
-        `;
-        header.insertAdjacentHTML('beforeend', headerHTML);
-        document.getElementById('thread-content').textContent = thread.content;
-
-        function addComment(comment)
-        {
-            var commentHtml = `
-                <div class="comment">
-                    <div class="top-comment">
-                        <p class="user">${comment.author}</p>
-                        <p class="comment-ts">${new Date(comment.date).toLocaleString()}</p>
-                    </div>
-                    <div class="comment-content">${comment.content}</div>
-                </div>
-            `;
-            comments.insertAdjacentHTML('beforeend', commentHtml);
-        }
-
-        var comments = document.querySelector('.comments');
-        for (let comment of thread.comments) {
-            addComment(comment);
-        }
-
-        var button = document.getElementById('add-comment-btn');
-        button.addEventListener('click', function(){
-            var txt = document.querySelector('textarea');
-            var comment = {
-                content: txt.value,
-                date: Date.now(),
-                author: 'Benny'
-            }
-            addComment(comment);
-        })
-    </script>
+    <script src="{{ url_for('static', filename='js/social-media/thread.js') }}"></script>
 {% endblock %}

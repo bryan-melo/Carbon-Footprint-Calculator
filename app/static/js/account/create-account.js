@@ -40,7 +40,7 @@ function submitCreateAccountForm(event) {
     };
 
     // Send data to the backend
-    fetch("http://127.0.0.1:5000/api/create-account", {
+    fetch("http://127.0.0.1:5000/api/account/create-account", {
         headers: {"Content-Type": "application/json"},
         method: "POST",
         body: JSON.stringify(data),
