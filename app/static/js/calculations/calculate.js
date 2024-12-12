@@ -1,9 +1,13 @@
-const bar_char_data = [
-    ["Average Person's Consumption", 'My Resource Consumption', "Average Person's Resource Consumption"],
-    ['Monthly Electricity Usage (kWh)', 1020, 800],
-    ['Monthly Fuel Consumption (liters):', 52, 100],
-    ['Waste Generated (kg per month)', 67, 50],
-    ['Monthly Water Usage (liters)', 207, 300],
+const userData = localStorage.getItem('userData');
+const user = JSON.parse(userData);
+const username = user.username;
+
+let bar_char_data = [
+    ["Categories", `${username}`, "Average Person"],
+    ['Monthly Electricity Usage (kWh)', 0, 800],
+    ['Monthly Fuel Consumption (liters):', 0, 100],
+    ['Waste Generated (kg per month)', 0, 50],
+    ['Monthly Water Usage (liters)', 0, 300],
 ];
 
 // Global variables
@@ -21,7 +25,7 @@ function drawBarChart() {
     options = {
       chart: {
           title: 'Personal Resource Consumption',
-          subtitle: 'Comparison of Personal and Average Usage'
+          subtitle: 'Comparison of Personal and Average Usage on a Monthly Basis'
         },
         hAxis: {
           title: 'Resource Consumption'
@@ -61,18 +65,61 @@ function calculateCarbonFootprint() {
 
     //total emissions
     const totalEmissions = electricityEmissions + fuelEmissions + wasteEmissions + waterEmissions;
+
+    // Update chart data with user input values
+    bar_char_data[1][1] = electricityUsage;  
+    bar_char_data[2][1] = fuelConsumption;   
+    bar_char_data[3][1] = wasteGenerated;   
+    bar_char_data[4][1] = waterUsage;   
+
     //results
     document.getElementById('result-text').style.display = 'block';
     document.getElementById('result').textContent = `Your total monthly carbon footprint is: ${totalEmissions.toFixed(2)} kg CO2 equivalent.`;
     document.getElementById("chart-container").style.display = "block";
 
-    // Draw the chart after calculation
-    drawBarChart();
+
+    // Get user data
+    const userDataString = localStorage.getItem('userData');
+    const userData = JSON.parse(userDataString);
+    
+    // Prep data
+    const data = {
+        accountId: userData.accountId,
+        date: new Date(), 
+        electricityUsage: electricityUsage,
+        fuelConsumption: fuelConsumption,
+        wasteGenerated: wasteGenerated,
+        waterUsage: waterUsage,
+        totalEmissions: totalEmissions
+    };
+
+    // Send data to the backend
+    fetch("http://127.0.0.1:5000/api/calculations/process-calculations", {
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify(data),
+    })
+    .then(response => {
+        if (response.ok) {
+            // Draw the chart after calculation
+            initializeBarChart()
+            drawBarChart();
+        } else {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+    })
+    .then(responseData => {
+        console.log('Server Response:', responseData); // Log server response
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('result').textContent += ' There was an error saving your data. Please try again later.';
+    });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
     google.charts.load('current', {packages: ['corechart', 'bar']});
-    google.charts.setOnLoadCallback(initializeBarChart); // Initialize only once on page load
+    google.charts.setOnLoadCallback(initializeBarChart); 
 });
 
 window.addEventListener('resize', () => {
