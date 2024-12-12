@@ -109,7 +109,7 @@
     padding-top: 15px;
     font-size: 1.3rem;
     font-weight: bold;
-    color: #4CAF50;  /* Green color for positive data */
+    color: #4CAF50;  
     text-align: center;
 }
 
@@ -140,8 +140,8 @@
 }
 
 #pie-chart {
-    width: 95%;  /* Adjust the chart width */
-    height: 80%; /* Adjust the chart height */
+    width: 95%; 
+    height: 80%; 
     box-sizing: border-box;
     margin: 0;
     scale: 1.15;
@@ -153,9 +153,10 @@
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 50.5%; /* Take up half of the available space */
+    width: 50.5%; 
     height: 275px;
-    overflow-y: auto; /* Add scrolling for long user lists */
+    overflow-y: auto; 
+    text-align: left; 
 }
 
 /* Styling for the list of users */
@@ -163,12 +164,14 @@
     list-style-type: none;
     padding-left: 0;
     margin-bottom: 0;
+    text-align: left; 
 }
 
 #user-list li {
     font-size: 1rem;
     color: #333;
     margin-bottom: 10px;
+    text-align: left; 
 }
 
 #pie-chart-container h5, #user-list-container h5 {
@@ -208,9 +211,15 @@
     }
 
     #user-list-container {
-        width: 100%; /* Full width in responsive layout */
-        height: auto; /* Adjust height to fit content */
+        width: 100%;
+        height: auto; 
         margin-top: 20px;
+        text-align: left; 
+    }
+
+    #user-list li {
+        font-size: 0.9rem;
+        text-align: left; 
     }
 }
 
@@ -230,7 +239,7 @@
     }
 
     #pie-chart {
-        scale: 1; /* Remove scaling for smaller screens */
+        scale: 1; 
         width: 90%;
         height: 90%;
     }
@@ -243,6 +252,6 @@
     }
 
     #user-list li {
-        font-size: 0.9rem; /* Reduce font size for smaller screens */
+        font-size: 0.9rem; 
     }
 }
