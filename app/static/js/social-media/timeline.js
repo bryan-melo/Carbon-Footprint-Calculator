@@ -7,12 +7,12 @@ function addThread(thread)
                 <h4 class="title">${thread.title}</h4>
                 <div class="bottom">
                     <p class="timestamp">${new Date(thread.date).toLocaleDateString()}</p>
-                    <p class="comment-count">${thread.comments} comments</p>
+                    <p class="comment-count">0 comments</p>
                 </div>
             </a>
         </li>
     `;
-    container.insertAdjacentHTML('beforeend', html);
+    container.insertAdjacentHTML('afterbegin', html);
 }
 
 var container = document.querySelector('ol');
@@ -34,44 +34,56 @@ fetch("http://127.0.0.1:5000/api/social-media/get-timeline-data")
     })
     .catch(function(error) {
         console.log(error);
-    });
+    }
+);
 
 
-var button = document.getElementById('create-thread-btn');
-button.addEventListener('click', function(){
-    var title = document.getElementById('thread-title');
-    var content = document.getElementById('thread-content');
-    console.log(title.value);
-    console.log(content.value);
-    var thread = {
-        id: threads.length + 1,     // Dependent on data.js
-        title: title.value,
-        author: "Benny",
-        date: Date.now(),
-        content: content.value,
-        comments: []
-    };
+document.addEventListener('DOMContentLoaded', function() {
+    var button = document.getElementById('create-thread-btn');
+    
+    if (button) {
+        button.addEventListener('click', function() {
+            var title = document.getElementById('thread-title');
+            var content = document.getElementById('thread-content');
 
-    // Add thread to the database
-    fetch("http://127.0.0.1:5000/api/social-media/add-new-thread", {
-        headers: {"Content-Type": "application/json"},
-        method: "POST",
-        body: JSON.stringify(thread),
-    })
-    .then(async function (response) {
-        if (!response.ok) {
-            const response_1 = await response.json();
-            console.log(response_1.error);
-        }
-        else {
-            const status = await response.json();
-            console.log(status.message);
+            // User data
+            const userData = localStorage.getItem('userData');
+            const user = JSON.parse(userData);
 
-            // Add thread dynamically
-            addThread(thread);
-        }
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
+            // Prep user data
+            const accountId = user.accountId;
+
+            var thread = {
+                accountId: accountId,
+                title: title.value,
+                date: new Date(),
+                content: content.value,
+            };
+
+            // Add thread to the database
+            fetch("http://127.0.0.1:5000/api/social-media/add-new-thread", {
+                headers: { "Content-Type": "application/json" },
+                method: "POST",
+                body: JSON.stringify(thread),
+            })
+            .then(async function(response) {
+                if (!response.ok) {
+                    const response_1 = await response.json();
+                    console.log(response_1.error);
+                } else {
+                    const status = await response.json();
+                    console.log(status.message);
+
+                    // Update the thread with the new ID from the backend
+                    thread.id = status.thread_id;
+
+                    // Add thread dynamically
+                    addThread(thread);
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+        });
+    } 
 });
