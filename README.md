@@ -65,6 +65,3 @@ Ctrl+C
 deactivate
 ```
 <br>
-
-## Notes
-<!--Feel free to add additional notes-->
