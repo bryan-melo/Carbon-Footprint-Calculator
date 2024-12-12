@@ -137,12 +137,15 @@ button:hover {
     font-family: 'Oxanium', sans-serif;
 }
 
-@media (max-width: 768px) {
-    #calculation-form {
-        padding: 20px;
+@media (max-width: 800px) {
+    #container {
+        flex-direction: column; 
+        gap: 20px;  
     }
 
-    button {
-        max-width: 100%;
+    #chart-container {
+        max-width: 100%; 
+        display: block; 
+        overflow: hidden;
     }
 }

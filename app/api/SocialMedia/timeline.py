@@ -21,7 +21,6 @@ def get_all_threads_data(con):
     """
     cursor.execute(query)
     rows = cursor.fetchall()
-    print(rows)
     return [{"id": row[0], "title": row[1], "date": row[2], "comments": row[3]} for row in rows]
 
 

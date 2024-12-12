@@ -35,7 +35,7 @@ fetch(`http://127.0.0.1:5000/api/social-media/get-thread/${id}`)
                         <div class="comment-content">${comment.content}</div>
                     </div>
                 `;
-                commentsContainer.insertAdjacentHTML('beforeend', commentHtml);
+                commentsContainer.insertAdjacentHTML('afterend', commentHtml);
             }
         }
     })
@@ -46,11 +46,20 @@ fetch(`http://127.0.0.1:5000/api/social-media/get-thread/${id}`)
 // Add new comment
 var button = document.getElementById('add-comment-btn');
 button.addEventListener('click', function() {
+
+    // User data
+    const userData = localStorage.getItem('userData');
+    const user = JSON.parse(userData);
+
+    // Prep user data
+    const accountId = user.accountId;
+    const username = user.username;
+
     var txt = document.querySelector('textarea');
     var comment = {
         content: txt.value,
         date: new Date().toISOString(),
-        author: 'Benny' // Replace with dynamic author if available
+        author: username
     };
 
     // Add comment to backend
@@ -59,8 +68,9 @@ button.addEventListener('click', function() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             post_id: id,
+            account_id: accountId,
             content: comment.content,
-            date: comment.date
+            date: comment.date,
         })
     })
     .then(async function (response) {
