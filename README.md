@@ -1,10 +1,10 @@
 # Carbon Footprint Calculator
 
 ## Project Overview
-- **App Name:**
-- **Description:**
-- **Features:**
-- **Contributors:**
+- **App Name:** Carbon Footprint Calculator
+- **Description:** A web app that allows users to track their carbon emissions and post on an in-app social media system to discuss about carbon emissions.
+- **Features:** Login/authentication system, user profiles to save data, carbon emissions calculator, social media threads
+- **Contributors:** Bryan Melo, Lance Le, Joey Lau, Benny Le
 
 ## Steps to Run Flask App
 
