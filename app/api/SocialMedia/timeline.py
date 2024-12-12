@@ -17,10 +17,10 @@ def get_all_threads_data():
         
     # Format data for JSON
     test_data = [
-        {"id": 1, "title": "Test 1", "date": "2024-01-05", "comments": 4},
-        {"id": 2, "title": "Test 2", "date": "2024-02-10", "comments": 1},
-        {"id": 3, "title": "Test 3", "date": "2024-03-15", "comments": 6},
-        {"id": 4, "title": "Test 4", "date": "2024-04-20", "comments": 2},
+        {"id": 1, "title": "Reducing Carbon Footprint at Home", "date": "2024-01-05", "comments": 2},
+        {"id": 2, "title": "Carbon Offset Strategies for Travel", "date": "2024-02-10", "comments": 2},
+        {"id": 3, "title": "Reducing Plastic Waste in Daily Life", "date": "2024-03-15", "comments": 2},
+        {"id": 4, "title": "The Impact of Diet on Climate Change", "date": "2024-04-20", "comments": 2},
     ]
     
     return test_data

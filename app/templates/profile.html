@@ -1,15 +1,66 @@
 {% extends "base.html" %}
 
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock %}
+
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-    <div>
+    <div id="dashboard-welcome">
         <h2 id="welcome-user-message"></h2>
+        <h6 id="progress-message">Take a look at your overall progress</h6>
     </div>
 
+    <hr class="section-divider">
+
+    <div id="dashboard-header">
+        <h4>Account Overview</h4>
+    </div>
+
+    <div id="dashboard-content">
+        <div id="chart-container">
+            <!-- Line chart: to display emission changes overtime -->
+        </div>
+        <div id="data-container-right">
+            <div id="data-container-right-top">
+                <h5>Cumulative Carbon Emissions</h5>
+                <hr class="section-divider">
+                <p id="total-emissions">2,510.10 kg CO₂</p>
+            </div>
+            <div id="data-container-right-bottom">
+                <h5>Most Impactful Category</h5>
+                <hr class="section-divider">
+                <p id="most-impactful-category">Water Usage: 53,500 Liters</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="additional-content">
+        <div id="pie-chart-container">
+            <!-- Pie Chart: to display inputs category -->
+            <h5>Distribution of Your Annual Resource Usage</h5>
+            <hr class="section-divider">
+            <div id="pie-chart">
+                <!-- Pie chart will be rendered here -->
+            </div>
+        </div>
+        <div id="user-list-container">
+            <h5>Most Recent Calculations</h5>
+            <hr class="section-divider">
+            <ul id="user-list">
+                <li><b>Total Emissions:</b> 432.10 kg CO₂ <b>Date:</b> 12-10-2024</li>
+                <li><b>Total Emissions:</b> 647.25 kg CO₂ <b>Date:</b> 11-05-2024</li>
+                <li><b>Total Emissions:</b> 350.95 kg CO₂ <b>Date:</b> 10-19-2024</li>
+                <li><b>Total Emissions:</b> 512.95 kg CO₂ <b>Date:</b> 09-02-2024</li>
+                <li><b>Total Emissions:</b> 566.85kg CO₂  <b>Date:</b> 08-24-2024</li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}
 
 {% block scripts %} 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="{{ url_for('static', filename='js/profile/profile-user.js') }}"></script>
 {% endblock %}
 

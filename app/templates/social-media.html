@@ -8,16 +8,20 @@
 
 {% block content %}
     <div class="top-bar">
-        <h1>My Forum</h1>
+        <h4>Timeline</h4>
     </div>
+
+    <hr class="section-divider">
     
-    <div class="main">
-        <ol>
-        </ol>
-        <div class="create-thread">
-        <textarea id="thread-title" class="thread-title" placeholder="Thread Title"></textarea>
-        <textarea id="thread-content" class="content" placeholder="Content"></textarea>
-        <button id="create-thread-btn">Create Thread</button>
+    <div id="container">
+        <div class="main">
+            <ol></ol>
+            <hr class="section-divider">
+            <div class="create-thread">
+                <textarea id="thread-title" class="thread-title" placeholder="Thread Title"></textarea>
+                <textarea id="thread-content" class="content" placeholder="Content"></textarea>
+                <button id="create-thread-btn">Create Thread</button>
+            </div>
         </div>
     </div>
 {% endblock %}

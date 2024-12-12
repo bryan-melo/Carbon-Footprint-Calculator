@@ -1,3 +1,12 @@
+.section-divider {
+    border: none; 
+    height: 1.7px; 
+    background-color: #ccc; 
+    width: 95%; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -5,6 +14,10 @@ a {
     
 h1, h4, ol{
     margin: 0;
+    color: #4CAF50; 
+    font-size: 1.7rem;
+    font-family: 'Roboto', sans-serif;
+    padding-left: 10px;
 }
     
 p {
@@ -12,23 +25,67 @@ p {
 }
     
 textarea {
-    width: 80%;
-    height: 80px;
+    width: 95%;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border 0.3s;
+    font-size: 1rem;
+    padding: 12px;
+    margin: 10px auto 0;
 }
    
 button {
-    display: block;
-    margin: 10px 0;
+    width: 95%; 
+    padding: 12px 20px; 
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px auto 0;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+    display: block; 
 }
     
 .top-bar {
-    background-color: #568203;
-    padding: 0 40px;
+    text-align: left; 
+    margin: 20px;   
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.top-bar h4 {
+    font-size: 1.7rem; 
+    color: #333; 
+    font-weight: bold; 
+    margin-bottom: -20px;
+}
+
+#container {
+    display: flex;
+    flex-direction: row; 
+    align-items: stretch; 
+    justify-content: center;
+    gap: 20px; 
+    width: 100%;
+    max-width: 1750px;
+    margin-top: 40px;
 }
     
 .main {
-    background-color: #F6F6EF;
-    padding: 10px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 0; 
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 30px;
+    box-sizing: border-box;
 }
     
 .comments {
@@ -36,31 +93,54 @@ button {
 }
     
 .comment {
-    margin: 10px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border 0.3s;
+    width: 95%;
+    margin: 1px auto 0;
 }
     
 .row {
-    padding: 5px 0;
+    padding: 20px 0;
 }
     
 .bottom, .top-comment {
     display: flex;
     color: grey;
-    font-size: 12px;
+    font-size: 11pt;
+    padding-right: 20px;
+}
+
+.top-comment {
+    color: red;
+    padding-bottom: 10px;
 }
     
 .timestamp {
     padding-right: 10px;
+    font-size: 11pt;
+    color: #4682B4;
 }
     
 .comment-ts {
-    padding-left: 10px;
+    display: flex;
+    color: #4682B4;
+    font-size: 11pt;
+    padding-left: 20px;
 }
     
 .author {
-    padding-left: 10px;
+    padding-left: 20px;
+    color: red;
+    font-size: 11pt;
 }
     
 #thread-content {
-    margin-bottom: 20px;
+    width: 100%;
+    height: 150px;
+    font-size: 1.3rem;
+    padding: 15px;
+    margin-left: 10px;
+    font-family: 'Roboto', sans-serif;
 }
