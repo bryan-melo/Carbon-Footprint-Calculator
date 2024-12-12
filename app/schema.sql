@@ -28,6 +28,16 @@ CREATE TABLE IF NOT EXISTS posts (
     post_id INTEGER PRIMARY KEY AUTOINCREMENT,  
     account_id INTEGER NOT NULL,                   
     post_title TEXT NOT NULL,                  
-    post_date DATETIME NOT NULL,           
+    post_date DATETIME NOT NULL,     
+    post_content TEXT NOT NULL,      
     FOREIGN KEY (account_id) REFERENCES accounts(account_id)  
+);
+
+-- Comments Table
+CREATE TABLE IF NOT EXISTS comments (
+    comment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    post_id INTEGER NOT NULL,
+    content TEXT NOT NULL,
+    comment_date DATETIME NOT NULL,
+    FOREIGN KEY (post_id) REFERENCES posts(post_id)
 );
