@@ -40,7 +40,6 @@ function fetchUserData() {
     fetch(`http://127.0.0.1:5000/api/profile/get_calculation_data?accountId=${accountId}`)
     .then(response => response.json())
     .then(data => {
-        console.log(data);  // Handle the data received from the backend
 
         // Most recent calculations section
         const recentCalculations = getMostRecentCalculations(data);
@@ -155,7 +154,7 @@ function initializeLineChartData() {
     dataTable = new google.visualization.DataTable();
     dataTable.addColumn('number', 'X');
     dataTable.addColumn('number', 'Carbon Emissions');
-    dataTable.addRows(data);
+    dataTable.addRows(lineChartData);
   }
 
 function initializePieChartData() {

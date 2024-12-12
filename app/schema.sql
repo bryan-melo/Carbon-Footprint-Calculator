@@ -37,7 +37,9 @@ CREATE TABLE IF NOT EXISTS posts (
 CREATE TABLE IF NOT EXISTS comments (
     comment_id INTEGER PRIMARY KEY AUTOINCREMENT,
     post_id INTEGER NOT NULL,
+    account_id INTEGER NOT NULL,
     content TEXT NOT NULL,
     comment_date DATETIME NOT NULL,
-    FOREIGN KEY (post_id) REFERENCES posts(post_id)
+    FOREIGN KEY (post_id) REFERENCES posts(post_id),
+    FOREIGN KEY (account_id) REFERENCES accounts(account_id)
 );

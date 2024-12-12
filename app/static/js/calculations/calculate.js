@@ -4,10 +4,10 @@ const username = user.username;
 
 let bar_char_data = [
     ["Categories", `${username}`, "Average Person"],
-    ['Monthly Electricity Usage (kWh)', 0, 800],
-    ['Monthly Fuel Consumption (liters):', 0, 100],
+    ['Monthly Electricity Usage (kWh)', 0, 300],
+    ['Monthly Fuel Consumption (liters):', 0, 150],
     ['Waste Generated (kg per month)', 0, 50],
-    ['Monthly Water Usage (liters)', 0, 300],
+    ['Monthly Water Usage (liters)', 0, 10000],
 ];
 
 // Global variables
@@ -107,9 +107,6 @@ function calculateCarbonFootprint() {
         } else {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-    })
-    .then(responseData => {
-        console.log('Server Response:', responseData); // Log server response
     })
     .catch(error => {
         console.error('Error:', error);

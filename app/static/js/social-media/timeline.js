@@ -7,7 +7,7 @@ function addThread(thread)
                 <h4 class="title">${thread.title}</h4>
                 <div class="bottom">
                     <p class="timestamp">${new Date(thread.date).toLocaleDateString()}</p>
-                    <p class="comment-count">0 comments</p>
+                    <p class="comment-count">${thread.comments} comments</p>
                 </div>
             </a>
         </li>
