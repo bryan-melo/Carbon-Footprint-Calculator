@@ -1,0 +1,248 @@
+.section-divider {
+    border: none; 
+    height: 1.7px; 
+    background-color: #ccc; 
+    width: 95%; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Styling for the div container */
+#dashboard-welcome {
+    padding: 20px; 
+}
+
+/* Styling for the welcome message */
+#welcome-user-message {
+    font-size: 2rem; 
+    font-weight: bold; 
+    color: #4CAF50; 
+    text-align: left;
+    margin-bottom: 10px; 
+    font-family: 'Oxanium', sans-serif;
+}
+
+/* Styling for the progress message */
+#progress-message {
+    font-size: 0.9rem; 
+    color: #777; 
+    text-align: left; 
+    font-style: italic; 
+}
+
+#dashboard-header {
+    text-align: left; 
+    margin: 20px;   
+    padding-top: 10px; 
+}
+
+#dashboard-header h4 {
+    font-size: 1.5rem; 
+    color: #333; 
+    font-weight: bold; 
+    margin-bottom: -20px;
+}
+
+/* Styling for the main dashboard content */
+#dashboard-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+    max-width: 1750px;
+    overflow: hidden;
+}
+
+/* Styling for the chart container */
+#chart-container {
+    flex: 3; 
+    min-width: 200px;
+    width: 100%;
+    height: 410px;
+    background-color: #f2f2f2; 
+    margin-right: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the right container */
+#data-container-right {
+    display: flex;
+    flex-direction: column;
+    width: 29%;
+    margin-left: 10px; 
+    min-width: 200px;
+    max-width: 350px;
+    flex-shrink: 0;
+}
+
+/* Styling for the data containers */
+#data-container-right-top, #data-container-right-bottom {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 200px;
+    min-width: 200px;
+}
+
+/* Additional styling for data containers */
+#data-container-right-top {
+    margin-bottom: 10px;
+}
+
+#data-container-right-top, #data-container-right-bottom {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Styling for the text inside the data containers */
+#data-container-right-top h5, #data-container-right-bottom h5 {
+    font-weight: bold;
+    font-size: 1.05rem;
+    text-align: center;
+}
+
+/* Paragraph Styling for dynamic data */
+#total-emissions, #most-impactful-category {
+    padding-top: 15px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #4CAF50;  /* Green color for positive data */
+    text-align: center;
+}
+
+#most-impactful-category {
+    color: red;
+}
+
+/* Styling for the additional content section */
+#additional-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    max-width: 1750px;
+    flex-wrap: wrap;
+}
+
+/* Styling for the pie chart container */
+#pie-chart-container {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 48%; 
+    height: 275px;
+    padding: 15px;
+    overflow: hidden;
+}
+
+#pie-chart {
+    width: 95%;  /* Adjust the chart width */
+    height: 80%; /* Adjust the chart height */
+    box-sizing: border-box;
+    margin: 0;
+    scale: 1.15;
+}
+
+/* Styling for the user list container */
+#user-list-container {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 50.5%; /* Take up half of the available space */
+    height: 275px;
+    overflow-y: auto; /* Add scrolling for long user lists */
+}
+
+/* Styling for the list of users */
+#user-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+#user-list li {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#pie-chart-container h5, #user-list-container h5 {
+    font-weight: bold;
+    font-size: 1.05rem;
+    text-align: center;
+}
+
+#user-list {
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 0;
+}
+
+/* Small screens (tablets) */
+@media (max-width: 768px) {
+    #dashboard-content {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #chart-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #data-container-right {
+        width: 100%;
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    #pie-chart-container {
+        width: 100%;
+    }
+
+    #user-list-container {
+        width: 100%; /* Full width in responsive layout */
+        height: auto; /* Adjust height to fit content */
+        margin-top: 20px;
+    }
+}
+
+/* Extra small screens (mobile devices) */
+@media (max-width: 600px) {
+    #dashboard-content {
+        flex-direction: column;
+    }
+
+    #chart-container {
+        height: 300px;
+    }
+
+    #data-container-right {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #pie-chart {
+        scale: 1; /* Remove scaling for smaller screens */
+        width: 90%;
+        height: 90%;
+    }
+
+    #user-list-container {
+        width: 100%;
+        padding: 10px;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    #user-list li {
+        font-size: 0.9rem; /* Reduce font size for smaller screens */
+    }
+}

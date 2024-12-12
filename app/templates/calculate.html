@@ -1,57 +1,62 @@
 {% extends "base.html" %}
 
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/calculate.css') }}">
+{% endblock %}
+
 {% block title %}Calculate{% endblock %}
 
 {% block content %}
-<h1>Calculations Page</h1>
-<form id="carbonForm">
-    <label for="electricityUsage">Monthly Electricity Usage (kWh):</label>
-    <input type="number" id="electricityUsage" required>
+    <div id="calculate-header">
+        <h4>Personal Carbon Footprint Assessment</h4>
+    </div>
 
-    <label for="fuelConsumption">Monthly Fuel Consumption (liters):</label>
-    <input type="number" id="fuelConsumption" required>
+    <hr class="section-divider">
 
-    <label for="wasteGenerated">Waste Generated (kg per month):</label>
-    <input type="number" id="wasteGenerated" required>
+    <div id="input-descriptions">
+        <p><strong>Monthly Electricity Usage (kWh):</strong> This is the amount of electricity consumed in your home or workplace during a month, measured in kilowatt-hours (kWh). It includes usage from daily appliances such as lighting, refrigerators, air conditioners, televisions, and charging devices.</p>
+    
+        <p><strong>Monthly Fuel Consumption (liters):</strong> This refers to the total fuel you use in a month, primarily for transportation (cars, motorcycles, etc.) and home heating systems. Examples include gasoline or diesel used for vehicles and heating oil for boilers.</p>
+    
+        <p><strong>Waste Generated (kg per month):</strong> This is the total weight of waste you produce in a month, typically measured in kilograms. It includes food scraps, packaging materials, paper, plastics, and other discarded items from daily life.</p>
+    
+        <p><strong>Monthly Water Usage (liters):</strong> This measures the water you use in a month, in liters. It includes activities such as showering, washing dishes, and doing laundry.</p>
+    </div>
 
-    <label for="waterUsage">Monthly Water Usage (liters):</label>
-    <input type="number" id="waterUsage" required>
+    <hr class="section-divider">
 
-    <button type="button" onclick="calculateCarbonFootprint()">Calculate Carbon Footprint</button>
-</form>
+    <div id="container">
+        <div id="calculation-form">
+            <form id="carbonForm">
+                <div class="form-group">
+                    <label for="electricityUsage">Monthly Electricity Usage (kWh):</label>
+                    <input type="number" id="electricityUsage" required>
+                </div>
+                <div class="form-group">
+                    <label for="fuelConsumption">Monthly Fuel Consumption (liters):</label>
+                    <input type="number" id="fuelConsumption" required>
+                </div>
+                <div class="form-group">
+                    <label for="wasteGenerated">Waste Generated (kg per month):</label>
+                    <input type="number" id="wasteGenerated" required>
+                </div>
+                <div class="form-group">
+                    <label for="waterUsage">Monthly Water Usage (liters):</label>
+                    <input type="number" id="waterUsage" required>
+                </div>
+                <button type="button" onclick="calculateCarbonFootprint()">Calculate Carbon Footprint</button>
+            </form>
+        </div>
+        <div id="chart-container" style="display: none;">
+            <!-- Bar chart will be rendered here -->
+        </div>
+    </div>
 
-<div id="result"></div>
+    <div id="result"></div>
+    <p id="result-text" style="display: none">Your carbon footprint has been successfully calculated! You can view your updated profile and track your progress, or interact with others on our Social Media page to share your journey and inspire positive change. <br>Thank you for helping make the world a better place!</p>
 
-<script>
-        function calculateCarbonFootprint() {
-            //user input values
-            const electricityUsage = parseFloat(document.getElementById('electricityUsage').value);
-            const fuelConsumption = parseFloat(document.getElementById('fuelConsumption').value);
-            const wasteGenerated = parseFloat(document.getElementById('wasteGenerated').value);
-            const waterUsage = parseFloat(document.getElementById('waterUsage').value);
-
-            if (isNaN(electricityUsage) || isNaN(fuelConsumption) || isNaN(wasteGenerated) || isNaN(waterUsage)) {
-                document.getElementById('result').textContent = 'Please enter valid numerical values for all inputs.';
-                return;
-            }
-
-            //emission factors (kg CO2 per unit)
-            const CO2_PER_KWH = 0.527;
-            const CO2_PER_LITER_FUEL = 2.31;
-            const CO2_PER_KG_WASTE = 0.8;
-            const CO2_PER_LITER_WATER = 0.0003;
-
-            //calc emissions for each activity
-            const electricityEmissions = electricityUsage * CO2_PER_KWH;
-            const fuelEmissions = fuelConsumption * CO2_PER_LITER_FUEL;
-            const wasteEmissions = wasteGenerated * CO2_PER_KG_WASTE;
-            const waterEmissions = waterUsage * CO2_PER_LITER_WATER;
-
-            //total emissions
-            const totalEmissions = electricityEmissions + fuelEmissions + wasteEmissions + waterEmissions;
-            //results
-            document.getElementById('result').textContent = `Your total monthly carbon footprint is: ${totalEmissions.toFixed(2)} kg CO2 equivalent.`;
-        }
-    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{{ url_for('static', filename='js/calculations/calculate.js') }}"></script>
 {% endblock %}
+
 

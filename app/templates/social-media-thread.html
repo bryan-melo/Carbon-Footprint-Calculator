@@ -8,16 +8,20 @@
 
 {% block content %}
     <div class="top-bar">
-        <h1>
-            My Forum
-        </h1>
+        <h4>Timeline</h4>
     </div>
-    <div class="main">
-        <div id="thread-header" class="header"></div>
-        <div id="thread-content"></div>
-        <textarea></textarea>
-        <button id="add-comment-btn">Add comment</button>
-        <div class="comments">
+
+    <hr class="section-divider">
+
+    <div id="container">
+        <div class="main">
+            <div id="thread-header" class="header"></div>
+            <hr class="section-divider">
+            <div id="thread-content"></div>
+            <hr class="section-divider">
+            <textarea  placeholder="Comment Section"></textarea>
+            <button id="add-comment-btn">Add comment</button>
+            <div class="comments"></div>
         </div>
     </div>
 {% endblock %}
